@@ -10,11 +10,15 @@ public class WordCounter {
 
 	public void addWord(String word) {
 		if (words.containsKey(word)) {
-			words.put(word, words.get(word) + 1);
+			words.put(word, incrementNumberOfOccurrences(word));
 		} else {
 			words.put(word, 1);
 		}
 
+	}
+
+	private int incrementNumberOfOccurrences(String word) {
+		return words.get(word) + 1;
 	}
 
 	public String getWord(String word) {

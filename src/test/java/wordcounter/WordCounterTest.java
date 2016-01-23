@@ -18,14 +18,14 @@ public class WordCounterTest {
 	public void shouldBeAbleToAddWord() {
 		addSingleWord();
 
-		assertEquals(wordCounter.getWord(WORD1), WORD1);
+		assertEquals(WORD1, wordCounter.getWord(WORD1));
 	}
 
 	@Test public void shouldBeAbleToAddMoreThanOneWord() {
 		addTwoWords();
 
-		assertEquals(wordCounter.getWord(WORD1), WORD1);
-		assertEquals(wordCounter.getWord(WORD2), WORD2);
+		assertEquals(WORD1, wordCounter.getWord(WORD1));
+		assertEquals(WORD2, wordCounter.getWord(WORD2));
 
 	}
 
@@ -33,7 +33,7 @@ public class WordCounterTest {
 	public void shouldBeAbleToGetSingleWordIfExists() {
 		addTwoWords();
 
-		assertEquals(wordCounter.getWord(WORD1), WORD1);
+		assertEquals(WORD1, wordCounter.getWord(WORD1));
 	}
 
 	@Test(expected = NoSuchElementException.class)
@@ -41,6 +41,16 @@ public class WordCounterTest {
 		addTwoWords();
 
 		wordCounter.getWord(NOT_EXISTING_WORD);
+
+	}
+
+	@Test
+	public void shouldBeAbleToReceiveNumberOfOccurrencesForSingleWord() {
+		addSingleWord();
+		addTwoWords();
+
+		assertEquals(2, wordCounter.getOccurrences(WORD1));
+		assertEquals(1, wordCounter.getOccurrences(WORD2));
 
 	}
 
